@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fic\\Desktop\\GitGufosReact\\backend\\backend.csproj": {}
+    "C:\\Users\\carolline.barros\\Desktop\\Gufos_React\\backend\\backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\fic\\Desktop\\GitGufosReact\\backend\\backend.csproj": {
+    "C:\\Users\\carolline.barros\\Desktop\\Gufos_React\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fic\\Desktop\\GitGufosReact\\backend\\backend.csproj",
+        "projectUniqueName": "C:\\Users\\carolline.barros\\Desktop\\Gufos_React\\backend\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "C:\\Users\\fic\\Desktop\\GitGufosReact\\backend\\backend.csproj",
-        "packagesPath": "C:\\Users\\fic\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fic\\Desktop\\GitGufosReact\\backend\\obj\\",
+        "projectPath": "C:\\Users\\carolline.barros\\Desktop\\Gufos_React\\backend\\backend.csproj",
+        "packagesPath": "C:\\Users\\carolline.barros\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\carolline.barros\\Desktop\\Gufos_React\\backend\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\fic\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\carolline.barros\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"

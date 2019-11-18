@@ -10,6 +10,10 @@ class Categoria extends Component {
       listaCategorias : [],
       titulo: ''
     }
+    // Chamar funcoes do projeto 
+    this.atualizaEstadoTitulo = this.atualizaEstadoTitulo.bind(this);
+    this.buscarCategorias = this.buscarCategorias.bind(this);
+    this.cadastrarCategoria = this.cadastrarCategoria.bind(this);
   }
 
 //função que faz a equisição para api
@@ -26,6 +30,40 @@ buscarCategorias(){
 componentDidMount(){
   this.buscarCategorias();
 }
+
+//Recebe um evento, e recebo o valor do campo titulo
+atualizaEstadoTitulo(event){
+    this.setState({titulo:event.target.value}) 
+}
+
+cadastrarCategoria(event){
+    event.preventDefault(); //Evito comportamentos padrões da página
+
+    // local para onde serão os dados
+    fetch('http://localhost:5000/api/categorias',
+      { //inicio corpo do metodo da api
+        method: 'POST', // declara o metodo que será utilizado
+        body: JSON.stringify({titulo: this.state.titulo}),
+        headers: {
+          "Content-type" : "application/json"
+        }
+      })//final do metodo da api
+      
+      //inicio do then
+      .then(resposta => {
+          if (resposta.status === 200) {
+            console.log('Categoria cadastrada!'); 
+          }
+      }) 
+      //final do then
+
+      .catch(erro => console.log(erro))
+      .then(this.buscarCategorias) //Atualiza na tabela a categoria cadastrada
+        
+}
+
+
+
 
   render() {
     return (
@@ -71,16 +109,18 @@ componentDidMount(){
               <h2 className="conteudoPrincipal-cadastro-titulo">
                 Cadastrar Tipo de Evento
             </h2>
-              <form>
+            {/*adicionar eventos no formulario*/}
+            {/* Adicionar evento para submeter requisicao e chamar a funcao a ser realizada*/}
+            <form onSubmit={this.cadastrarCategoria}>
                 <div className="container">
                   <input
+                    value={this.state.titulo} //o valor digitado no input vai para a "variavel" titulo
+                    onChange = {this.atualizaEstadoTitulo} //evento do formulario
                     type="text"
                     id="nome-tipo-evento"
                     placeholder="tipo do evento"
                   />
-                  <button
-                    className="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro"
-                  >
+                  <button  type="submit" className="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro">
                     Cadastrar
                 </button>
                 </div>
