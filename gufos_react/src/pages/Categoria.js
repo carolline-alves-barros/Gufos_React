@@ -58,12 +58,34 @@ cadastrarCategoria(event){
       //final do then
 
       .catch(erro => console.log(erro))
-      .then(this.buscarCategorias) //Atualiza na tabela a categoria cadastrada
-        
+      .then(this.buscarCategorias) //Atualiza na tabela a categoria cadastrada    
+}
+
+deletarCategoria = (id) => {
+   console.log("Excluindo");
+
+   fetch("http://localhost:5000/api/categorias/"+id,{
+      method : "DELETE",
+      headers : {
+        "Content-type" : "application/json"
+      }
+   })
+
+   .then(response => response.json())
+   
+   .then(response => {
+      console.log(response);
+      this.setState( () => ({lista: this.state.lista}) )
+   })
+   .catch(error => console.log(error))
+   .then(this.buscarCategorias)
 }
 
 
 
+
+
+//adicionar funcao deletar categoria
 
   render() {
     return (
@@ -87,6 +109,7 @@ cadastrarCategoria(event){
                   <tr>
                     <th>#</th>
                     <th>Título</th>
+                    <th>Ação</th>
                   </tr>
                 </thead>
 
@@ -97,9 +120,14 @@ cadastrarCategoria(event){
                         <tr key={categoria.categoriaId}>
                           <td>{categoria.categoriaId}</td>
                           <td>{categoria.titulo}</td>
+                          
+                          <td>
+                            <button type="submit" onClick={i => this.deletarCategoria(categoria.categoriaId)}>Excluir</button>
+                          </td>
+
                         </tr>
                       )
-                    })
+                    }.bind(this))
                   }
                 </tbody>
               </table>
@@ -120,7 +148,7 @@ cadastrarCategoria(event){
                     id="nome-tipo-evento"
                     placeholder="tipo do evento"
                   />
-                  <button  type="submit" className="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro">
+                  <button type="submit" className="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro">
                     Cadastrar
                 </button>
                 </div>

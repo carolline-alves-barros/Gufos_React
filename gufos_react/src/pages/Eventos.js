@@ -40,7 +40,10 @@ class Evento extends Component{
         this.setState({ acessoLivre: event.target.value })
     }
 
-     
+          //Começo do ciclo de vida da funcao buscarEventos
+          componentDidMount(){
+            this.buscarEventos();
+          } 
 
     cadastrarEventos(event){
         event.preventDefault(); // Evita o comportamento padrao da pagina
@@ -71,10 +74,7 @@ class Evento extends Component{
         .then(this.buscarEventos)
     }
 
-     //Começo do ciclo de vida da funcao buscarEventos
-     componentDidMount(){
-      this.buscarEventos();
-  }    
+   
 
   
     render() {
@@ -82,8 +82,7 @@ class Evento extends Component{
             <div>
            <header className="cabecalhoPrincipal">
           <div className="container">
-            {/* <img src={logo} /> */}
-
+          
             <nav className="cabecalhoPrincipal-nav">
               Administrador
           </nav>
@@ -145,7 +144,7 @@ class Evento extends Component{
                                     <option value="1">
                                         Livre
                                     </option>
-                                    <option value="2">
+                                    <option value="0">
                                         Restrito
                                     </option>
                                 </select>
